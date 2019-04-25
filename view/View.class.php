@@ -11,14 +11,17 @@
 
             $this->templateNames = array();
             $this->templateNames['head'] = 'head';
-            $this->templateNames['top'] = 'top';
             //$this->templateNames['menu'] = 'menu';
-            $this->templateNames['foot'] = 'foot';
             $this->templateNames['content'] = $templateName;
+			
+			if (($templateName != 'login') && ($templateName != 'inscription')) {
+				$this->templateNames['top'] = 'menu';
+				$this->templateNames['foot'] = 'foot';			
+			}
 
             $this->args = $args;
-            //$this->args['controller'] = $controller;
-            //$this->args['view'] = $this;
+            $this->args['controller'] = $controller;
+            $this->args['view'] = $this;
         }
 
         public function setArg($key, $val) {
@@ -27,10 +30,15 @@
 
         public function render() {
             $this->loadTemplate($this->templateNames['head'], $this->args);
-            $this->loadTemplate($this->templateNames['top'], $this->args);
             //$this->loadTemplate($this->templateNames['menu'], $this->args);
-            $this->loadTemplate($this->templateNames['content'], $this->args);
-            $this->loadTemplate($this->templateNames['foot'], $this->args);
+			if ((isset($this->templateNames['top'])) && (isset($this->templateNames['foot']))) {
+				$this->loadTemplate($this->templateNames['top'], $this->args);
+				$this->loadTemplate($this->templateNames['content'], $this->args);
+				$this->loadTemplate($this->templateNames['foot'], $this->args);			
+			}
+			else {
+				$this->loadTemplate($this->templateNames['content'], $this->args);
+			}
         }
 
         public function loadTemplate($name, $args=NULL) {

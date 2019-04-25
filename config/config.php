@@ -18,16 +18,16 @@
     // DB
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    if($_SERVER['DOCUMENT_ROOT']=='C:/xampp/htdocs'){
+    if($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs'){
         define('_localhost','localhost');
-        define('_dbname','TP3MVC');
+        define('_dbname','thomas_bizet');
         define('_user','root');
         define('_password','root');
     }
     else{
         define('_localhost','localhost');
-        define('_dbname','TP3MVC');
-        define('_user','test');
-        define('_password','root');
+        define('_dbname','thomas_bizet');
+        define('_user','thomas.bizet');
+        define('_password','fXvmKcIE');
     }
 ?>

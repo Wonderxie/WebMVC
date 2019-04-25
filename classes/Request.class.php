@@ -9,7 +9,6 @@
             if (!isset(static::$singleton)) {
                 static::$singleton = new static();
             }
-
             return static::$singleton;
         }
 
@@ -58,6 +57,10 @@
         public function writePOST($field, $var) {
             $_POST[$field] = $var;
         }
+		
+		/*public function writeSESSION($field, $var) {
+            $_SESSION[$field] = $var;
+        }*/
 
         public function has($field) {
             if (!empty($_POST[$field]) || !empty($_GET[$field])){
